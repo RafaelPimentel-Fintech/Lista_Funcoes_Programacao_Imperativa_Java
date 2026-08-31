@@ -1,0 +1,544 @@
+1º)
+
+import java.util.Scanner;
+
+public class ConversaoTemperatura {
+
+    static double celsiusParaFahrenheit(double celsius) {
+        return celsius * 1.8 + 32;
+    }
+
+    static double celsiusParaKelvin(double celsius) {
+        return celsius + 273.15;
+    }
+
+    static double celsiusParaReaumur(double celsius) {
+        return celsius * 0.8;
+    }
+
+    static double celsiusParaRankine(double celsius) {
+        return celsius * 1.8 + 491.67;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double celsius = scanner.nextDouble();
+
+        double fahrenheit = celsiusParaFahrenheit(celsius);
+        double kelvin = celsiusParaKelvin(celsius);
+        double reaumur = celsiusParaReaumur(celsius);
+        double rankine = celsiusParaRankine(celsius);
+
+        System.out.println("Fahrenheit: " + fahrenheit);
+        System.out.println("Kelvin: " + kelvin);
+        System.out.println("Réaumur: " + reaumur);
+        System.out.println("Rankine: " + rankine);
+
+        scanner.close();
+    }
+}
+
+2º)
+
+import java.util.Scanner;
+
+public class AlturaSexoPessoas {
+
+    static double maiorAltura(double[] alturas) {
+        double maior = alturas[0];
+        for (int i = 1; i < alturas.length; i++) {
+            if (alturas[i] > maior) {
+                maior = alturas[i];
+            }
+        }
+        return maior;
+    }
+
+    static double menorAltura(double[] alturas) {
+        double menor = alturas[0];
+        for (int i = 1; i < alturas.length; i++) {
+            if (alturas[i] < menor) {
+                menor = alturas[i];
+            }
+        }
+        return menor;
+    }
+
+    static double mediaAlturaHomens(int[] sexos, double[] alturas) {
+        double soma = 0;
+        int quantidadeHomens = 0;
+        for (int i = 0; i < alturas.length; i++) {
+            if (sexos[i] == 2) {
+                soma += alturas[i];
+                quantidadeHomens++;
+            }
+        }
+        return soma / quantidadeHomens;
+    }
+
+    static int quantidadeMulheres(int[] sexos) {
+        int total = 0;
+        for (int i = 0; i < sexos.length; i++) {
+            if (sexos[i] == 1) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] sexos = new int[10];
+        double[] alturas = new double[10];
+
+        for (int i = 0; i < 10; i++) {
+            sexos[i] = scanner.nextInt();
+            alturas[i] = scanner.nextDouble();
+        }
+
+        double maior = maiorAltura(alturas);
+        double menor = menorAltura(alturas);
+        double media = mediaAlturaHomens(sexos, alturas);
+        int mulheres = quantidadeMulheres(sexos);
+
+        System.out.printf("Maior altura: %.2f m%n", maior);
+        System.out.printf("Menor altura: %.2f m%n", menor);
+        System.out.printf("Média de altura dos homens: %.2f m%n", media);
+        System.out.println("Número de mulheres: " + mulheres);
+
+        scanner.close();
+    }
+}
+
+3º)
+
+import java.util.Scanner;
+
+public class MediaSalarial {
+
+    static double calcularMedia(double[] salarios) {
+        double soma = 0;
+        for (int i = 0; i < salarios.length; i++) {
+            soma += salarios[i];
+        }
+        return soma / salarios.length;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int quantidade = scanner.nextInt();
+        double[] salarios = new double[quantidade];
+
+        for (int i = 0; i < quantidade; i++) {
+            salarios[i] = scanner.nextDouble();
+        }
+
+        double media = calcularMedia(salarios);
+
+        System.out.printf("Média salarial: %.2f%n", media);
+
+        scanner.close();
+    }
+}
+
+4º)
+
+import java.util.Scanner;
+
+public class CalculoAzulejos {
+
+    static int calcularQuantidadeAzulejos(double alturaParede, double larguraParede,
+                                           double alturaAzulejo, double larguraAzulejo) {
+        double areaParede = alturaParede * larguraParede;
+        double areaAzulejo = alturaAzulejo * larguraAzulejo;
+        double quantidade = areaParede / areaAzulejo;
+        return (int) Math.ceil(quantidade);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double alturaParede = scanner.nextDouble();
+        double larguraParede = scanner.nextDouble();
+        double alturaAzulejo = scanner.nextDouble();
+        double larguraAzulejo = scanner.nextDouble();
+
+        int quantidade = calcularQuantidadeAzulejos(alturaParede, larguraParede,
+                                                      alturaAzulejo, larguraAzulejo);
+
+        System.out.println("Quantidade de azulejos necessários: " + quantidade);
+
+        scanner.close();
+    }
+}
+
+5º)
+
+import java.util.Scanner;
+
+public class VolumeLataOleo {
+
+    static double calcularVolume(double raio, double altura) {
+        return Math.PI * Math.pow(raio, 2) * altura;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double raio = scanner.nextDouble();
+        double altura = scanner.nextDouble();
+
+        double volume = calcularVolume(raio, altura);
+
+        System.out.printf("Volume da lata de óleo: %.2f m³%n", volume);
+
+        scanner.close();
+    }
+}
+
+6º)
+
+import java.util.Scanner;
+
+public class PotenciaElevarMassa {
+
+    static double calcularPotenciaHp(double massa, double altura, double tempo) {
+        double gravidade = 9.81;
+        double potenciaWatts = (massa * gravidade * altura) / tempo;
+        return potenciaWatts / 745.6999;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double massa = scanner.nextDouble();
+        double altura = scanner.nextDouble();
+        double tempo = scanner.nextDouble();
+
+        double potenciaHp = calcularPotenciaHp(massa, altura, tempo);
+
+        System.out.printf("Potência necessária: %.3f hp%n", potenciaHp);
+
+        scanner.close();
+    }
+}
+
+7º)
+
+import java.util.Scanner;
+
+public class CalculoFatorial {
+
+    static long calcularFatorial(int numero) {
+        long resultado = 1;
+        for (int i = 2; i <= numero; i++) {
+            resultado *= i;
+        }
+        return resultado;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int numero = scanner.nextInt();
+
+        long fatorial = calcularFatorial(numero);
+
+        System.out.println("Fatorial: " + fatorial);
+
+        scanner.close();
+    }
+}
+
+8º)
+
+import java.util.Scanner;
+
+public class ConversaoSegundos {
+
+    static int calcularHoras(int totalSegundos) {
+        return totalSegundos / 3600;
+    }
+
+    static int calcularMinutos(int totalSegundos) {
+        return (totalSegundos % 3600) / 60;
+    }
+
+    static int calcularSegundosRestantes(int totalSegundos) {
+        return totalSegundos % 60;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int totalSegundos = scanner.nextInt();
+
+        int horas = calcularHoras(totalSegundos);
+        int minutos = calcularMinutos(totalSegundos);
+        int segundos = calcularSegundosRestantes(totalSegundos);
+
+        System.out.println(horas + " hora(s)");
+        System.out.println(minutos + " minuto(s)");
+        System.out.println(segundos + " segundo(s)");
+
+        scanner.close();
+    }
+}
+
+9º)
+
+import java.util.Scanner;
+
+public class SistemaNotas {
+
+    static double calcularMediaAluno(double nota1, double nota2, double nota3) {
+        return (nota1 + nota2 + nota3) / 3;
+    }
+
+    static String determinarSituacao(double media) {
+        if (media >= 7) {
+            return "Aprovado";
+        } else if (media >= 5) {
+            return "Recuperação";
+        } else {
+            return "Reprovado";
+        }
+    }
+
+    static double calcularMediaGeral(double[] medias) {
+        double soma = 0;
+        for (int i = 0; i < medias.length; i++) {
+            soma += medias[i];
+        }
+        return soma / medias.length;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int quantidadeAlunos = scanner.nextInt();
+        double[] medias = new double[quantidadeAlunos];
+
+        for (int i = 0; i < quantidadeAlunos; i++) {
+            double nota1 = scanner.nextDouble();
+            double nota2 = scanner.nextDouble();
+            double nota3 = scanner.nextDouble();
+
+            double media = calcularMediaAluno(nota1, nota2, nota3);
+            medias[i] = media;
+
+            String situacao = determinarSituacao(media);
+
+            System.out.println("Aluno " + (i + 1) + " - Média: " + media + " - " + situacao);
+        }
+
+        double mediaGeral = calcularMediaGeral(medias);
+        System.out.printf("Média geral da turma: %.1f%n", mediaGeral);
+
+        scanner.close();
+    }
+}
+
+10º)
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SistemaCaixaLoja {
+
+    static double calcularTotal(ArrayList<Double> precos) {
+        double total = 0;
+        for (double preco : precos) {
+            total += preco;
+        }
+        return total;
+    }
+
+    static double calcularDesconto(double total) {
+        if (total > 500) {
+            return total * 0.15;
+        } else if (total > 200) {
+            return total * 0.10;
+        } else {
+            return 0;
+        }
+    }
+
+    static double calcularValorFinal(double total, double desconto) {
+        return total - desconto;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Double> precos = new ArrayList<>();
+
+        double preco = scanner.nextDouble();
+        while (preco != 0) {
+            precos.add(preco);
+            preco = scanner.nextDouble();
+        }
+
+        double total = calcularTotal(precos);
+        double desconto = calcularDesconto(total);
+        double valorFinal = calcularValorFinal(total, desconto);
+
+        System.out.printf("Total da compra: %.2f%n", total);
+        System.out.printf("Desconto: %.2f%n", desconto);
+        System.out.printf("Valor final: %.2f%n", valorFinal);
+
+        scanner.close();
+    }
+}
+
+11º)
+
+import java.util.Scanner;
+
+public class AnaliseNumeros {
+
+    static int maiorNumero(int[] numeros) {
+        int maior = numeros[0];
+        for (int i = 1; i < numeros.length; i++) {
+            if (numeros[i] > maior) {
+                maior = numeros[i];
+            }
+        }
+        return maior;
+    }
+
+    static int menorNumero(int[] numeros) {
+        int menor = numeros[0];
+        for (int i = 1; i < numeros.length; i++) {
+            if (numeros[i] < menor) {
+                menor = numeros[i];
+            }
+        }
+        return menor;
+    }
+
+    static int quantidadePares(int[] numeros) {
+        int contador = 0;
+        for (int i = 0; i < numeros.length; i++) {
+            if (numeros[i] % 2 == 0) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+    static double calcularMedia(int[] numeros) {
+        int soma = 0;
+        for (int i = 0; i < numeros.length; i++) {
+            soma += numeros[i];
+        }
+        return (double) soma / numeros.length;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] numeros = new int[10];
+
+        for (int i = 0; i < 10; i++) {
+            numeros[i] = scanner.nextInt();
+        }
+
+        int maior = maiorNumero(numeros);
+        int menor = menorNumero(numeros);
+        int pares = quantidadePares(numeros);
+        double media = calcularMedia(numeros);
+
+        System.out.println("Maior número: " + maior);
+        System.out.println("Menor número: " + menor);
+        System.out.println("Quantidade de pares: " + pares);
+        System.out.println("Média: " + media);
+
+        scanner.close();
+    }
+}
+
+12º)
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SistemaEstatisticas {
+
+    static int calcularQuantidade(ArrayList<Integer> numeros) {
+        return numeros.size();
+    }
+
+    static int calcularSoma(ArrayList<Integer> numeros) {
+        int soma = 0;
+        for (int numero : numeros) {
+            soma += numero;
+        }
+        return soma;
+    }
+
+    static double calcularMedia(ArrayList<Integer> numeros) {
+        return (double) calcularSoma(numeros) / calcularQuantidade(numeros);
+    }
+
+    static int maiorNumero(ArrayList<Integer> numeros) {
+        int maior = numeros.get(0);
+        for (int numero : numeros) {
+            if (numero > maior) {
+                maior = numero;
+            }
+        }
+        return maior;
+    }
+
+    static int menorNumero(ArrayList<Integer> numeros) {
+        int menor = numeros.get(0);
+        for (int numero : numeros) {
+            if (numero < menor) {
+                menor = numero;
+            }
+        }
+        return menor;
+    }
+
+    static int quantidadePares(ArrayList<Integer> numeros) {
+        int contador = 0;
+        for (int numero : numeros) {
+            if (numero % 2 == 0) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+    static int quantidadeImpares(ArrayList<Integer> numeros) {
+        int contador = 0;
+        for (int numero : numeros) {
+            if (numero % 2 != 0) {
+                contador++;
+            }
+        }
+        return contador;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> numeros = new ArrayList<>();
+
+        int numero = scanner.nextInt();
+        while (numero != -1) {
+            numeros.add(numero);
+            numero = scanner.nextInt();
+        }
+
+        System.out.println("Quantidade de números: " + calcularQuantidade(numeros));
+        System.out.println("Soma: " + calcularSoma(numeros));
+        System.out.printf("Média: %.1f%n", calcularMedia(numeros));
+        System.out.println("Maior número: " + maiorNumero(numeros));
+        System.out.println("Menor número: " + menorNumero(numeros));
+        System.out.println("Quantidade de pares: " + quantidadePares(numeros));
+        System.out.println("Quantidade de ímpares: " + quantidadeImpares(numeros));
+
+        scanner.close();
+    }
+}
