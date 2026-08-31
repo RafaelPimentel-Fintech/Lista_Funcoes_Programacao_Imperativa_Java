@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+public class AlturaSexoPessoas {
+
+    static double maiorAltura(double[] alturas) {
+        double maior = alturas[0];
+        for (int i = 1; i < alturas.length; i++) {
+            if (alturas[i] > maior) {
+                maior = alturas[i];
+            }
+        }
+        return maior;
+    }
+
+    static double menorAltura(double[] alturas) {
+        double menor = alturas[0];
+        for (int i = 1; i < alturas.length; i++) {
+            if (alturas[i] < menor) {
+                menor = alturas[i];
+            }
+        }
+        return menor;
+    }
+
+    static double mediaAlturaHomens(int[] sexos, double[] alturas) {
+        double soma = 0;
+        int quantidadeHomens = 0;
+        for (int i = 0; i < alturas.length; i++) {
+            if (sexos[i] == 2) {
+                soma += alturas[i];
+                quantidadeHomens++;
+            }
+        }
+        return soma / quantidadeHomens;
+    }
+
+    static int quantidadeMulheres(int[] sexos) {
+        int total = 0;
+        for (int i = 0; i < sexos.length; i++) {
+            if (sexos[i] == 1) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] sexos = new int[10];
+        double[] alturas = new double[10];
+
+        for (int i = 0; i < 10; i++) {
+            sexos[i] = scanner.nextInt();
+            alturas[i] = scanner.nextDouble();
+        }
+
+        double maior = maiorAltura(alturas);
+        double menor = menorAltura(alturas);
+        double media = mediaAlturaHomens(sexos, alturas);
+        int mulheres = quantidadeMulheres(sexos);
+
+        System.out.printf("Maior altura: %.2f m%n", maior);
+        System.out.printf("Menor altura: %.2f m%n", menor);
+        System.out.printf("Média de altura dos homens: %.2f m%n", media);
+        System.out.println("Número de mulheres: " + mulheres);
+
+        scanner.close();
+    }
+}
